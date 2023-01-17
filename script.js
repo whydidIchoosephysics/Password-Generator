@@ -106,58 +106,104 @@ console.log(options.passLength, options.passUppercase, options.passNumbers, opti
 // Initialize Array that contains all available characters to be picked randomly, as chosen by the user
 let availableCharacters = lowerCasedCharacters;
 
-  mergeArraysOptions()
-  console.log(availableCharacters)
+function mergeArraysOptions() {
+  if (options.passUppercase) {
+    availableCharacters = availableCharacters.concat(upperCasedCharacters);
+
+    if (options.passNumbers) {
+      availableCharacters = availableCharacters.concat(numericCharacters);
+
+      if (options.passSpecialCharacters) {
+        availableCharacters = availableCharacters.concat(specialCharacters);
+        return;
+      }
+      else {
+        return;
+      }
+    }
+    else {
+      if (options.passSpecialCharacters) {
+        availableCharacters = availableCharacters.concat(specialCharacters);
+        return;
+      }
+      else {
+        return;
+      }
+    }
+  }
+  else {
+    if (options.passNumbers) {
+      availableCharacters = availableCharacters.concat(numericCharacters);
+
+      if (options.passSpecialCharacters) {
+        availableCharacters = availableCharacters.concat(specialCharacters);
+        return;
+      }
+      else {
+        return;
+      }
+    }
+    else {
+      if (options.passSpecialCharacters) {
+        availableCharacters = availableCharacters.concat(specialCharacters);
+        return;
+      }
+      else {
+        return;
+      }
+    }
+
+  }
+}
 
 
-  // Function for getting a random element from an array
-  function getRandom(arr) {
-    let randomElement = Math.floor(Math.random() * arr.length);
 
-    return arr[randomElement];
+mergeArraysOptions()
+console.log(availableCharacters)
+
+
+// Function for getting a random element from an array
+function getRandom(arr) {
+  let randomElement = Math.floor(Math.random() * arr.length);
+
+  return arr[randomElement];
+}
+
+let somethingFromArray = getRandom(upperCasedCharacters);
+console.log(somethingFromArray);
+
+
+
+
+let passwordLength = 10;
+
+// Function to generate password with user input
+function generatePassword() {
+
+  let password = "";
+
+  for (let i = 0; i < passwordLength; i++) {
+    password += getRandom(availableCharacters);
   }
 
-  let somethingFromArray = getRandom(upperCasedCharacters);
-  console.log(somethingFromArray);
+  return password;
+}
 
 
 
-  let passwordLength = 10;
-
-  // Function to generate password with user input
-  // function generatePassword() {
-
-  //   let password = "";
-
-  //   for (let i = 0; i < passwordLength; i++) {
-  //     // let randomCharacter() = function {
-  //     //   for () {
-
-  //       }
-
-  //       getRandom(arrayAllOptions)
-  //     }
-  //     password += randomCharacter
-  //     ;
-
-  //   return password;
 
 
-  // return password;
+// Get references to the #generate element
+var generateBtn = document.querySelector('#generate');
 
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector('#password');
 
+  passwordText.value = password;
+}
 
-  // Get references to the #generate element
-  var generateBtn = document.querySelector('#generate');
-
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector('#password');
-
-    passwordText.value = password;
-  }
-
-  // Add event listener to generate button
-  generateBtn.addEventListener('click', writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);
 
