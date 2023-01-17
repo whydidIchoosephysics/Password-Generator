@@ -175,7 +175,7 @@ console.log(somethingFromArray);
 
 
 
-let passwordLength = 10;
+let passwordLength = options.passLength;
 
 // Function to generate password with user input
 function generatePassword() {
