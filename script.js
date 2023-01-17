@@ -91,15 +91,35 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
 
+  let passLength = prompt("Choose a password length between 8-64:");
+
+  let passUppercase = confirm("Do you want to use Uppercase letters?");
+
+  let passNumbers = confirm("Do you want to use numerical characters?");
+
+  let passSpecialCharacters = confirm("Do you want to use Special Characters?");
+
+  return { passLength, passUppercase, passNumbers, passSpecialCharacters };
 }
+
+let options = getPasswordOptions();
+
+console.log(options.passLength, options.passUppercase, options.passNumbers, options.passSpecialCharacters);
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  let randomElement = Math.floor(Math.random() * arr.length);
+  return arr[randomElement];
 
 }
 
+
 // Function to generate password with user input
 function generatePassword() {
+  let password = "sed";
+
+
+  return password;
 
 }
 
@@ -116,3 +136,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
